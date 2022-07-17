@@ -24,9 +24,8 @@ export const StarCounter: React.FC<Props> = (props) => {
 };
 
 const Container = styled.div`
-  margin-bottom: 15px;
-
   display: flex;
+  align-items: center;
   flex-direction: row;
   gap: 6.5px;
   svg {

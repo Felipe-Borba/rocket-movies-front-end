@@ -27,4 +27,23 @@ export const GlobalStyle = createGlobalStyle`
   button:hover, a:hover {
     filter: brightness(0.9);
   }
+
+  /* Designing for scroll-bar */
+  ::-webkit-scrollbar {
+    width: 40px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: none;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: ${({theme}) => theme.COLORS.PRIMARY_400};
+    border-radius: 32px;
+    border: 16px solid ${({theme}) => theme.COLORS.BACKGROUND_800};
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${({theme}) => theme.COLORS.PRIMARY_500};
+  }
 `;
