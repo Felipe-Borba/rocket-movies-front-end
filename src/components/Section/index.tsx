@@ -1,6 +1,7 @@
 import React, { startTransition } from "react";
 import styled from "styled-components";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import { Tag } from "../Tag";
 
 interface Props {
   title: string;
@@ -36,17 +37,6 @@ export const Section: React.FC<Props> = (props) => {
     </Container>
   );
 };
-
-const Tag = styled.span`
-  padding: 5px 16px;
-
-  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
-  color: ${({ theme }) => theme.COLORS.SECONDARY_100};
-  border-radius: 8px;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-`;
 
 const Container = styled.div`
   padding: 32px;
