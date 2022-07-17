@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface Props extends React.BaseHTMLAttributes<HTMLSpanElement>{}
+interface Props extends React.BaseHTMLAttributes<HTMLSpanElement> {}
 export const Tag: React.FC<Props> = (props) => {
   const { children } = props;
   return <Container>{children}</Container>;

@@ -9,12 +9,12 @@ export const StarCounter: React.FC<Props> = (props) => {
   const { ratting } = props;
 
   const stars = [
-    <AiOutlineStar />,
-    <AiOutlineStar />,
-    <AiOutlineStar />,
-    <AiOutlineStar />,
-    <AiOutlineStar />,
-  ].fill(<AiFillStar />, 0, ratting);
+    <AiOutlineStar size={20} />,
+    <AiOutlineStar size={20} />,
+    <AiOutlineStar size={20} />,
+    <AiOutlineStar size={20} />,
+    <AiOutlineStar size={20} />,
+  ].fill(<AiFillStar size={20} />, 0, ratting);
 
   return (
     <Container>

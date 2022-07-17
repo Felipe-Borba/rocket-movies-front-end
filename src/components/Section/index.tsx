@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { StarCounter } from "../StarCounter";
-import { Tag } from "../Tag";
+import { TagGroup } from "../TagGroup";
 
 interface Props {
   title: string;
@@ -17,11 +17,7 @@ export const Section: React.FC<Props> = (props) => {
       <h2>{title}</h2>
       <StarCounter ratting={ratting} />
       <p>{description}</p>
-      <div id="tags">
-        {tags.map((tag, index) => {
-          return <Tag key={index}>{tag}</Tag>;
-        })}
-      </div>
+      <TagGroup tags={tags} />
     </Container>
   );
 };
@@ -56,11 +52,5 @@ const Container = styled.div`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-  }
-
-  > #tags {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
   }
 `;
