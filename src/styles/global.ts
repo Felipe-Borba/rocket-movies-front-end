@@ -6,10 +6,13 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-
+  
   body {
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     color: ${({ theme }) => theme.COLORS.WHITE};
+
+    font-family: 'Roboto Slab', serif;
+    -webkit-font-smoothing: antialiased;
   }
 
   a {
