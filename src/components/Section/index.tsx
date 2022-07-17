@@ -1,6 +1,6 @@
-import React, { startTransition } from "react";
+import React from "react";
 import styled from "styled-components";
-import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import { StarCounter } from "../StarCounter";
 import { Tag } from "../Tag";
 
 interface Props {
@@ -12,22 +12,10 @@ interface Props {
 export const Section: React.FC<Props> = (props) => {
   const { title, ratting, description, tags } = props;
 
-  const stars = [
-    <AiOutlineStar />,
-    <AiOutlineStar />,
-    <AiOutlineStar />,
-    <AiOutlineStar />,
-    <AiOutlineStar />,
-  ].fill(<AiFillStar />, 0, ratting);
-
   return (
     <Container>
       <h2>{title}</h2>
-      <div id="stars">
-        {stars.map((star, index) =>
-          React.cloneElement(star, { key: index })
-        )}
-      </div>
+      <StarCounter ratting={ratting} />
       <p>{description}</p>
       <div id="tags">
         {tags.map((tag, index) => {
@@ -52,17 +40,6 @@ const Container = styled.div`
     font-weight: 700;
     font-size: 24px;
     line-height: 32px;
-  }
-
-  > #stars {
-    margin-bottom: 15px;
-
-    display: flex;
-    flex-direction: row;
-    gap: 6.5px;
-    svg {
-      color: ${({ theme }) => theme.COLORS.PRIMARY_400};
-    }
   }
 
   > p {
