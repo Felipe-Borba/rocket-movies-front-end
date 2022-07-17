@@ -1,19 +1,19 @@
-import "styled-components"
+import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
-  COLORS: {
-    BACKGROUND_900: string;
-    BACKGROUND_800: string;
-    BACKGROUND_700: string;
+    COLORS: {
+      BACKGROUND_900: string;
+      BACKGROUND_800: string;
+      BACKGROUND_700: string;
 
-    WHITE: string;
-    ORANGE: string;
+      WHITE: string;
+      ORANGE: string;
 
-    GRAY_100: string;
-    GRAY_300: string;
+      GRAY_100: string;
+      GRAY_300: string;
 
-    RED: string;
-  };
-}
+      RED: string;
+    };
+  }
 }
