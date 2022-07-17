@@ -6,12 +6,10 @@ export const theme: DefaultTheme = {
     BACKGROUND_800: "#312E38",
     BACKGROUND_700: "#3E3B47",
 
-    WHITE: "#F4EDE8",
-    ORANGE: "#FF9000",
-
-    GRAY_100: "#999591",
-    GRAY_300: "#666360",
-
-    RED: "#FF002E",
+    PRIMARY: "#FF859B",
+    
+    SECONDARY_400: "#666360",
+    SECONDARY_200: "#999591",
+    SECONDARY_100: "#F4EDE8",
   },
 };
