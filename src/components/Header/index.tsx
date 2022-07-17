@@ -23,7 +23,7 @@ export const Header: React.FC<Props> = () => {
 };
 
 const Title = styled.h1`
-  color: ${({ theme }) => theme.COLORS.PRIMARY};
+  color: ${({ theme }) => theme.COLORS.PRIMARY_400};
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -54,6 +54,7 @@ const Profile = styled.div`
     }
 
     strong {
+      white-space: nowrap;
       font-size: 14px;
       font-weight: 700;
       color: ${({ theme }) => theme.COLORS.SECONDARY_100};

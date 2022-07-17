@@ -7,7 +7,8 @@ declare module "styled-components" {
       BACKGROUND_800: string;
       BACKGROUND_700: string;
 
-      PRIMARY: string;
+      PRIMARY_500: string;
+      PRIMARY_400: string;
 
       SECONDARY_400: string;
       SECONDARY_200: string;

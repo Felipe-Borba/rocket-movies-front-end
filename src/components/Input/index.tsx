@@ -19,7 +19,7 @@ const Container = styled.div`
   margin-bottom: 8px;
   border-radius: 10px;
 
-  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
   color: ${({ theme }) => theme.COLORS.SECONDARY_400};
 
   > input {

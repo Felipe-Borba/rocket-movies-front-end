@@ -8,7 +8,7 @@ export const Container = styled.button`
   margin-top: 16px;
   border-radius: 10px;
 
-  background-color: ${({ theme }) => theme.COLORS.PRIMARY};
+  background-color: ${({ theme }) => theme.COLORS.PRIMARY_400};
   color: ${({theme}) => theme.COLORS.BACKGROUND_800};
   font-weight: 500;
 
