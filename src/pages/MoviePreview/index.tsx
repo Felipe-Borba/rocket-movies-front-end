@@ -1,10 +1,10 @@
-import { ButtonText } from "../../components/ButtonText";
-import { Header } from "../../components/Header";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { MdOutlineWatchLater } from "react-icons/md";
+import { ButtonText } from "../../components/ButtonText";
+import { Header } from "../../components/Header";
 import { StarCounter } from "../../components/StarCounter";
 import { TagGroup } from "../../components/TagGroup";
-import { Container, Content, TopSection, Title, Info } from "./styles";
+import { Container, Content, Info, Title, TopSection } from "./styles";
 
 export const MoviePreview = () => {
   return (
