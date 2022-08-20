@@ -4,15 +4,16 @@ import styled from "styled-components";
 
 interface Props {
   ratting: number;
+  size: number;
 }
 export const StarCounter: React.FC<Props> = (props) => {
-  const { ratting } = props;
+  const { ratting, size } = props;
 
   const Star = ({ starId }: { starId: number }) => {
     if (starId <= ratting) {
-      return <AiFillStar size={20} />;
+      return <AiFillStar size={size} />;
     } else {
-      return <AiOutlineStar size={20} />;
+      return <AiOutlineStar size={size} />;
     }
   };
 

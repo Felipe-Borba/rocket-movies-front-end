@@ -19,7 +19,7 @@ export const MoviePreview = () => {
       <TopSection>
         <Title>
           <h1>Interestellar</h1>
-          <StarCounter ratting={4} />
+          <StarCounter ratting={4} size={20} />
         </Title>
 
         <Info>
