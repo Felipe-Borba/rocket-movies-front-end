@@ -30,6 +30,10 @@ export const Container = styled.div`
   > main {
     grid-area: content;
     height: 89vh;
-    padding: 40px 120px 140px;
+    padding: 40px 120px 0px;
   }
+`;
+
+export const TopSection = styled.div`
+  margin-bottom: 24px;
 `;

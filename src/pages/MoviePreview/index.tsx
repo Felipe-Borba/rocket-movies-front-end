@@ -8,13 +8,15 @@ import { Info, Title, TopSection } from "./styles";
 
 export const MoviePreview = () => {
   return (
-    <MainLayout>
-      <TopSection>
+    <MainLayout
+      subHeader={
         <ButtonText>
           <AiOutlineArrowLeft />
           Voltar
         </ButtonText>
-
+      }
+    >
+      <TopSection>
         <Title>
           <h1>Interestellar</h1>
           <StarCounter ratting={4} />
