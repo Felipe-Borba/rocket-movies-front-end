@@ -8,17 +8,21 @@ interface Props {
 export const StarCounter: React.FC<Props> = (props) => {
   const { ratting } = props;
 
-  const stars = [
-    <AiOutlineStar size={20} />,
-    <AiOutlineStar size={20} />,
-    <AiOutlineStar size={20} />,
-    <AiOutlineStar size={20} />,
-    <AiOutlineStar size={20} />,
-  ].fill(<AiFillStar size={20} />, 0, ratting);
+  const Star = ({ starId }: { starId: number }) => {
+    if (starId <= ratting) {
+      return <AiFillStar size={20} />;
+    } else {
+      return <AiOutlineStar size={20} />;
+    }
+  };
 
   return (
     <Container>
-      {stars.map((star, index) => React.cloneElement(star, { key: index }))}
+      <Star starId={1} />
+      <Star starId={2} />
+      <Star starId={3} />
+      <Star starId={4} />
+      <Star starId={5} />
     </Container>
   );
 };
