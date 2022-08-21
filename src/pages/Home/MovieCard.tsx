@@ -2,19 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import { StarCounter } from "../../components/StarCounter";
 import { TagGroup } from "../../components/TagGroup";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   title: string;
   ratting: number;
   tags: string[];
   description: string;
+  id: string;
 }
 
 export const MovieCard: React.FC<Props> = (props) => {
-  const { title, ratting, tags, description } = props;
+  const { title, ratting, tags, description, id } = props;
+  const navigate = useNavigate();
 
   return (
-    <Container>
+    <Container onClick={() => navigate(`/movie/${id}`)}>
       <Title>
         <h1>{title}</h1>
         <StarCounter ratting={ratting} size={12} />
@@ -35,6 +38,7 @@ const Container = styled.div`
 
   background-color: ${({ theme }) => theme.COLORS.PRIMARY_500};
   border-radius: 16px;
+  cursor: pointer;
 `;
 
 export const Title = styled.div`

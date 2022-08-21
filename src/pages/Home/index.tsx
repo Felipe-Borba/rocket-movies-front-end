@@ -3,14 +3,18 @@ import { Button } from "../../components/Button";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MainLayout } from "../../components/layouts/MainLayout";
 import { MovieCard } from "./MovieCard";
+import { useNavigate } from "react-router-dom";
+
 
 export const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <MainLayout
       subHeader={
         <SubHeader>
           <h1>Meus filmes</h1>
-          <Button>
+          <Button onClick={() => navigate('/movie/new')}>
             <AiOutlinePlus size={16} />
             Adicionar filme
           </Button>
@@ -18,6 +22,7 @@ export const Home = () => {
       }
     >
       <MovieCard
+        id="1"
         title="Interestellar"
         ratting={4}
         tags={["Ficção Científica", "Drama", "Família"]}
@@ -25,6 +30,7 @@ export const Home = () => {
       />
 
       <MovieCard
+        id="2"
         title="Interestellar"
         ratting={4}
         tags={["Ficção Científica", "Drama", "Família"]}
@@ -32,6 +38,7 @@ export const Home = () => {
       />
 
       <MovieCard
+        id="3"
         title="Interestellar"
         ratting={4}
         tags={["Ficção Científica", "Drama", "Família"]}

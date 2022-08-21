@@ -1,22 +1,34 @@
 import React from "react";
 import styled from "styled-components";
 import { Input } from "../Input";
+import { Link } from "react-router-dom";
 
 interface Props {}
 export const Header: React.FC<Props> = () => {
+  function handleExit() {
+    console.log('todo');
+  }
+
   return (
     <Container>
-      <Title>RocketMovies</Title>
+      <Link to="/">
+        <Title>RocketMovies</Title>
+      </Link>
 
       <Input placeholder="Pesquisar pelo título"></Input>
 
       <Profile>
         <div>
           <strong>Felipe Borba</strong>
-          <a>sair</a>
+          <a onClick={handleExit}>sair</a>
         </div>
 
-        <img src="https://github.com/felipe-borba.png" alt="Foto do usuário" />
+        <Link to="/profile">
+          <img
+            src="https://github.com/felipe-borba.png"
+            alt="Foto do usuário"
+          />
+        </Link>
       </Profile>
     </Container>
   );
@@ -35,7 +47,7 @@ const Profile = styled.div`
   align-items: center;
   gap: 9px;
 
-  > img {
+  img {
     width: 64px;
     height: 64px;
     border-radius: 50%;

@@ -5,12 +5,15 @@ import { MainLayout } from "../../components/layouts/MainLayout";
 import { StarCounter } from "../../components/StarCounter";
 import { TagGroup } from "../../components/TagGroup";
 import { Info, Title, TopSection } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 export const MoviePreview = () => {
+  const navigate = useNavigate();
+
   return (
     <MainLayout
       subHeader={
-        <ButtonText>
+        <ButtonText onClick={() => navigate(-1)}>
           <AiOutlineArrowLeft />
           Voltar
         </ButtonText>
