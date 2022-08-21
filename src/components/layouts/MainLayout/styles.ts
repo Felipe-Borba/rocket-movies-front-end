@@ -37,3 +37,7 @@ export const Container = styled.div`
 export const TopSection = styled.div`
   margin-bottom: 24px;
 `;
+
+export const Head = styled.div`
+  grid-area: header;
+`;

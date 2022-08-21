@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { Input } from "../Input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Props {}
+
 export const Header: React.FC<Props> = () => {
+  const navigate = useNavigate()
   function handleExit() {
-    console.log('todo');
+    navigate("/sign-in");
   }
 
   return (
@@ -75,7 +77,6 @@ const Profile = styled.div`
 `;
 
 const Container = styled.header`
-  grid-area: header;
   width: 100%;
   display: flex;
   justify-content: space-between;

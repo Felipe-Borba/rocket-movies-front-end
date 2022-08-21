@@ -4,17 +4,18 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { MainLayout } from "../../components/layouts/MainLayout";
 import { MovieCard } from "./MovieCard";
 import { useNavigate } from "react-router-dom";
-
+import { Header } from "../../components/Header";
 
 export const Home = () => {
   const navigate = useNavigate();
 
   return (
     <MainLayout
+      header={<Header />}
       subHeader={
         <SubHeader>
           <h1>Meus filmes</h1>
-          <Button onClick={() => navigate('/movie/new')}>
+          <Button onClick={() => navigate("/movie/new")}>
             <AiOutlinePlus size={16} />
             Adicionar filme
           </Button>

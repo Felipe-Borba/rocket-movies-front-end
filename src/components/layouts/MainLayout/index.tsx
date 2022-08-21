@@ -1,23 +1,21 @@
 import React from "react";
-import { AiOutlineArrowLeft } from "react-icons/ai";
-import { MdOutlineWatchLater } from "react-icons/md";
-import { Header } from "../../Header";
-import { Container, Content, TopSection } from "./styles";
+import { Container, Content, TopSection, Head } from "./styles";
 
 interface Props {
   children: React.ReactNode;
-  subHeader: React.ReactNode;
+  header: React.ReactNode;
+  subHeader?: React.ReactNode;
 }
 
 export const MainLayout: React.FC<Props> = (props) => {
-  const { children, subHeader } = props;
+  const { children, subHeader, header } = props;
 
   return (
     <Container>
-      <Header />
+      <Head>{header}</Head>
 
       <main>
-        <TopSection>{subHeader}</TopSection>
+        {subHeader && <TopSection>{subHeader}</TopSection>}
         <Content>{children}</Content>
       </main>
     </Container>
