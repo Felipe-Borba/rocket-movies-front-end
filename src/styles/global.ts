@@ -46,4 +46,8 @@ export const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar-thumb:hover {
     background: ${({theme}) => theme.COLORS.PRIMARY_500};
   }
+ 
+  textarea:focus, input:focus{
+    outline: none;
+}
 `;

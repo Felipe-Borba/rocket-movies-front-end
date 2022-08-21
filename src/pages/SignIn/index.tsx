@@ -1,7 +1,33 @@
-import React from 'react'
+import React from "react";
+import { Input } from "../../components/Input";
+import SigInLayout from "../../components/layouts/SignInLayout";
+import { AiOutlineLock, AiOutlineMail } from "react-icons/ai";
+import { Button } from "../../components/buttons/Button";
+import { Link } from "react-router-dom";
+import { ButtonText } from "../../components/buttons/ButtonText";
 
 export default function SignIn() {
+  function handleSignIn(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
+
   return (
-    <div>SignIn</div>
-  )
+    <SigInLayout sectionText="Faça seu login">
+        <form onSubmit={handleSignIn}>
+          <Input placeholder="E-mail">
+            <AiOutlineMail />
+          </Input>
+          <Input placeholder="Senha">
+            <AiOutlineLock />
+          </Input>
+          <Button type="submit">Entrar</Button>
+        </form>
+
+        <Link to="/sign-up">
+          <ButtonText>CriarConta</ButtonText>
+        </Link>
+    </SigInLayout>
+  );
 }
+
+

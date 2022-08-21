@@ -8,6 +8,7 @@ export const Container = styled.button`
   border-radius: 10px;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   background-color: ${({ theme }) => theme.COLORS.PRIMARY_400};
   color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
