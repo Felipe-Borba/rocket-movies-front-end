@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "../../components/Button";
+import { Button } from "../../components/buttons/Button";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MainLayout } from "../../components/layouts/MainLayout";
 import { MovieCard } from "./MovieCard";

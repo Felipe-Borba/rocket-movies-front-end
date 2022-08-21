@@ -1,6 +1,6 @@
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { MdOutlineWatchLater } from "react-icons/md";
-import { ButtonText } from "../../components/ButtonText";
+import { ButtonText } from "../../components/buttons/ButtonText";
 import { MainLayout } from "../../components/layouts/MainLayout";
 import { StarCounter } from "../../components/StarCounter";
 import { TagGroup } from "../../components/TagGroup";
