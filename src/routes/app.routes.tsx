@@ -8,7 +8,7 @@ import Profile from '../pages/Profile';
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/movie/new" element={<MovieNew />} />
       <Route path="/movie/:id" element={<MoviePreview />} />

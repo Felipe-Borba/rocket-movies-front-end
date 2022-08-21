@@ -11,7 +11,7 @@ export const Header: React.FC<Props> = () => {
 
   return (
     <Container>
-      <Link to="/">
+      <Link to="/home">
         <Title>RocketMovies</Title>
       </Link>
 
