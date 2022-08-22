@@ -5,14 +5,14 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
 export const Input: React.FC<Props> = (props) => {
   const { children, ...rest } = props;
   return (
-    <Container>
+    <InputContainer>
       {children}
       <input {...rest} />
-    </Container>
+    </InputContainer>
   );
 };
 
-const Container = styled.div`
+export const InputContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
@@ -22,7 +22,8 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
   color: ${({ theme }) => theme.COLORS.SECONDARY_400};
 
-  > input {
+  > input,
+  textarea {
     height: 56px;
     width: 100%;
     padding: 19px 24px;
