@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Button } from "../../components/buttons/Button";
 import ButtonBack from "../../components/buttons/ButtonBack";
 import { Header } from "../../components/Header";
 import { Input, InputContainer } from "../../components/Input";
 import { MainLayout } from "../../components/layouts/MainLayout";
+import TagCreator from "../../components/TagCreator";
 
 export default function MovieNew() {
+  const [tags, setTags] = useState<string[]>(['react']);
+
   return (
     <MainLayout header={<Header />} subHeader={<ButtonBack />}>
       <form>
@@ -22,10 +25,7 @@ export default function MovieNew() {
             <textarea />
           </InputContainer>
 
-          <div>
-            <h2>Marcadores</h2>
-            TODO componente
-          </div>
+          <TagCreator tags={tags} setTags={setTags} />
 
           <Section>
             <Button alt>Excluir filme</Button>
