@@ -62,7 +62,7 @@ export default function Profile() {
           </Group>
 
           <Group>
-            <Button type="submit">Entrar</Button>
+            <Button type="submit">Salvar</Button>
           </Group>
         </form>
       </Container>
