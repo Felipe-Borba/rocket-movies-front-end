@@ -1,13 +1,14 @@
 import React from "react";
-import { AiOutlineClose, AiOutlinePlus,  } from "react-icons/ai";
+import { AiOutlineClose, AiOutlinePlus } from "react-icons/ai";
 import styled from "styled-components";
+import { Input } from "../Input";
 
 interface Props {
   tags: string[];
   setTags: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-export default function TagCreator({tags, setTags}: Props) {
+export default function TagCreator({ tags, setTags }: Props) {
   return (
     <OuterContainer>
       <h2>Marcadores</h2>
@@ -16,11 +17,16 @@ export default function TagCreator({tags, setTags}: Props) {
         {tags.map((tag, index) => {
           return (
             <Tag key={index}>
-              {tag} <AiOutlineClose size={22} />
+              {tag}
+              <AiOutlineClose onClick={() => console.log("todo")} />
             </Tag>
           );
         })}
-        <AddButton>Novo Marcador <AiOutlinePlus size={22} /></AddButton>
+
+        <AddButton>
+          <input placeholder="Novo Marcador" />
+          <AiOutlinePlus size={22} onClick={() => console.log("todo")} />
+        </AddButton>
       </TagContainer>
     </OuterContainer>
   );
@@ -30,7 +36,6 @@ const OuterContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-
 
   > h2 {
     font-style: normal;
@@ -44,20 +49,22 @@ const OuterContainer = styled.div`
 
 const TagContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
   padding: 16px;
-  gap: 8px;
+  gap: 24px;
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
   border-radius: 8px;
 
   svg {
     fill: ${({ theme }) => theme.COLORS.PRIMARY_400};
+    cursor: pointer;
   }
 `;
 
-const AddButton = styled.button`
+const AddButton = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -68,8 +75,29 @@ const AddButton = styled.button`
   border-radius: 10px;
   background-color: transparent;
   color: ${({ theme }) => theme.COLORS.SECONDARY_200};
+
+  input {
+    width: 100px;
+
+    background-color: transparent;
+    border: 0;
+    color: ${({ theme }) => theme.COLORS.SECONDARY_100};
+
+    &:placeholder {
+      color: ${({ theme }) => theme.COLORS.SECONDARY_400};
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
 `;
 
 const Tag = styled.div`
-  
-`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+  border-radius: 10px;
+`;
