@@ -1,26 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Input } from "../Input";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth, User } from "../../hooks/auth";
 import { api } from "../../services/api";
-import avatarPlaceHolder from '../../assets/avatar_placeholder.svg'
+import avatarPlaceHolder from "../../assets/avatar_placeholder.svg";
+import { useMovieNotes } from "../../hooks/movieNotes";
 
-interface Props {}
+interface Props {
+  searchMovie?: (title:string) => {}
+}
 
-export const Header: React.FC<Props> = () => {
-  const navigate = useNavigate()
-  const {signOut} = useAuth()
+export const Header: React.FC<Props> = ({ searchMovie}) => {
+  const navigate = useNavigate();
+  const { signOut } = useAuth();
+
+  const [search, setSearch] = useState("");
 
   const { data } = useAuth();
   const user = data.user! as User;
   //TODO code repetition
-  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceHolder
+  const avatarUrl = user.avatar
+    ? `${api.defaults.baseURL}/files/${user.avatar}`
+    : avatarPlaceHolder;
 
   function handleExit() {
-    signOut()
+    signOut();
     navigate("/sign-in");
   }
+
+  useEffect(() => {
+    searchMovie && searchMovie(search);
+  }, [search]);
 
   return (
     <Container>
@@ -28,7 +39,11 @@ export const Header: React.FC<Props> = () => {
         <Title>RocketMovies</Title>
       </Link>
 
-      <Input placeholder="Pesquisar pelo título"></Input>
+      <Input
+        placeholder="Pesquisar pelo título"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
       <Profile>
         <div>
@@ -37,10 +52,7 @@ export const Header: React.FC<Props> = () => {
         </div>
 
         <Link to="/profile">
-          <img
-            src={avatarUrl}
-            alt="Foto do usuário"
-          />
+          <img src={avatarUrl} alt="Foto do usuário" />
         </Link>
       </Profile>
     </Container>
