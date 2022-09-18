@@ -5,7 +5,6 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 
 export const AuthContext = createContext({
@@ -14,6 +13,7 @@ export const AuthContext = createContext({
   },
   async signIn({ email, password }: any) {},
   signOut() {},
+  async updateUser(user: UserUpdate) {},
 });
 
 interface Props {
@@ -52,6 +52,26 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
     setData({ user: null });
   }
 
+  async function updateUser(user: UserUpdate) {
+    api
+      .put("/users", user)
+      .then((response) => {
+        const user = response.data;
+
+        localStorage.setItem("@rocketnotes:user", JSON.stringify(user));
+
+        alert("Usuário atualizado com sucesso!");
+      })
+      .catch((error) => {
+        // TODO code repetition
+        if (error?.response) {
+          alert(error.response.data.message);
+        } else {
+          alert("Nao foi possível atualizar!");
+        }
+      });
+  }
+
   useEffect(() => {
     const user = localStorage.getItem("@rocketnotes:user");
     if (user) {
@@ -59,10 +79,15 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
         user: JSON.parse(user),
       });
     }
+
+    const token = localStorage.getItem("@rocketnotes:token");
+    if (token) {
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
   }, []);
 
   return (
-    <AuthContext.Provider value={{ signIn, data, signOut }}>
+    <AuthContext.Provider value={{ updateUser, signIn, data, signOut }}>
       {children}
     </AuthContext.Provider>
   );
@@ -72,4 +97,20 @@ export function useAuth() {
   const context = useContext(AuthContext);
 
   return context;
+}
+
+interface UserUpdate {
+  name: string;
+  email: string;
+  passwordOld: string;
+  password: string;
+}
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  avatar: string;
+  created_at: string;
+  updated_at: string;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AiOutlineCamera,
   AiOutlineLock,
@@ -10,10 +10,21 @@ import { Button } from "../../components/buttons/Button";
 import ButtonBack from "../../components/buttons/ButtonBack";
 import { Input } from "../../components/Input";
 import { MainLayout } from "../../components/layouts/MainLayout";
+import { useAuth, User } from "../../hooks/auth";
+import { api } from "../../services/api";
 
 export default function Profile() {
-  function handleUpdate(e: React.FormEvent<HTMLFormElement>) {
+  const { data } = useAuth();
+  const user = data.user! as User;
+  const { updateUser } = useAuth();
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [passwordOld, setPasswordOld] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function handleUpdate(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    await updateUser({ name, email, password, passwordOld });
   }
 
   function handleChangePicture() {
@@ -42,21 +53,39 @@ export default function Profile() {
 
         <form onSubmit={handleUpdate}>
           <Group>
-            <Input placeholder="Nome">
+            <Input
+              placeholder="Nome"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            >
               <AiOutlineUser />
             </Input>
 
-            <Input placeholder="E-mail">
+            <Input
+              placeholder="E-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            >
               <AiOutlineMail />
             </Input>
           </Group>
 
           <Group>
-            <Input placeholder="Senha atual">
+            <Input
+              placeholder="Senha atual"
+              type="password"
+              value={passwordOld}
+              onChange={(e) => setPasswordOld(e.target.value)}
+            >
               <AiOutlineLock />
             </Input>
 
-            <Input placeholder="Nova senha">
+            <Input
+              placeholder="Nova senha"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            >
               <AiOutlineLock />
             </Input>
           </Group>
