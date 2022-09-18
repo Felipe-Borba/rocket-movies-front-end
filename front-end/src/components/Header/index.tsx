@@ -2,12 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { Input } from "../Input";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
 interface Props {}
 
 export const Header: React.FC<Props> = () => {
   const navigate = useNavigate()
+  const {signOut} = useAuth()
+
   function handleExit() {
+    signOut()
     navigate("/sign-in");
   }
 
