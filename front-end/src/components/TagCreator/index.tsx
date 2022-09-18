@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineClose, AiOutlinePlus } from "react-icons/ai";
 import styled from "styled-components";
 import { Input } from "../Input";
@@ -9,23 +9,38 @@ interface Props {
 }
 
 export default function TagCreator({ tags, setTags }: Props) {
+  const [tag, setTag] = useState("");
+
+  function handleAddTag() {
+    setTags((old) => [...old, tag]);
+    setTag("");
+  }
+
+  function handleRemoveTag(id: number) {
+    setTags((old) => old.filter((_, index) => index !== id));
+  }
+
   return (
     <OuterContainer>
       <h2>Marcadores</h2>
 
       <TagContainer>
-        {tags.map((tag, index) => {
+        {tags?.map((tag, index) => {
           return (
             <Tag key={index}>
               {tag}
-              <AiOutlineClose onClick={() => console.log("todo")} />
+              <AiOutlineClose onClick={() => handleRemoveTag(index)} />
             </Tag>
           );
         })}
 
         <AddButton>
-          <input placeholder="Novo Marcador" />
-          <AiOutlinePlus size={22} onClick={() => console.log("todo")} />
+          <input
+            placeholder="Novo Marcador"
+            value={tag}
+            onChange={(e) => setTag(e.target.value)}
+          />
+          <AiOutlinePlus size={22} onClick={handleAddTag} />
         </AddButton>
       </TagContainer>
     </OuterContainer>
