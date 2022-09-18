@@ -66,7 +66,6 @@ class UsersController {
       user.password = await hash(password, 8);
     }
 
-    // TODO update avatar
     await database.run(
       `
       UPDATE users SET
@@ -84,3 +83,4 @@ class UsersController {
 }
 
 module.exports = UsersController;
+
