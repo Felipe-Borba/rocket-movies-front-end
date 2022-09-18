@@ -2,13 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import { Input } from "../Input";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/auth";
+import { useAuth, User } from "../../hooks/auth";
+import { api } from "../../services/api";
+import avatarPlaceHolder from '../../assets/avatar_placeholder.svg'
 
 interface Props {}
 
 export const Header: React.FC<Props> = () => {
   const navigate = useNavigate()
   const {signOut} = useAuth()
+
+  const { data } = useAuth();
+  const user = data.user! as User;
+  //TODO code repetition
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceHolder
 
   function handleExit() {
     signOut()
@@ -25,13 +32,13 @@ export const Header: React.FC<Props> = () => {
 
       <Profile>
         <div>
-          <strong>Felipe Borba</strong>
+          <strong>{user.name}</strong>
           <a onClick={handleExit}>sair</a>
         </div>
 
         <Link to="/profile">
           <img
-            src="https://github.com/felipe-borba.png"
+            src={avatarUrl}
             alt="Foto do usuário"
           />
         </Link>

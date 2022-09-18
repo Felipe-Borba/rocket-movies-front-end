@@ -14,6 +14,7 @@ export const AuthContext = createContext({
   async signIn({ email, password }: any) {},
   signOut() {},
   async updateUser(user: UserUpdate) {},
+  async updateUserPhoto(user: UserUpdate) {},
 });
 
 interface Props {
@@ -72,6 +73,28 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
       });
   }
 
+  async function updateUserPhoto(file:any) {
+    const uploadFile = new FormData()
+    uploadFile.append('avatar', file)
+
+    api.patch("/users/avatar", uploadFile)
+      .then((response) => {
+        const user = response.data;
+
+        localStorage.setItem("@rocketnotes:user", JSON.stringify(user));
+
+        alert("Avatar atualizado com sucesso!");
+      })
+      .catch((error) => {
+        // TODO code repetition
+        if (error?.response) {
+          alert(error.response.data.message);
+        } else {
+          alert("Nao foi possível atualizar o avatar!");
+        }
+      });
+  }
+
   useEffect(() => {
     const user = localStorage.getItem("@rocketnotes:user");
     if (user) {
@@ -87,7 +110,7 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ updateUser, signIn, data, signOut }}>
+    <AuthContext.Provider value={{updateUserPhoto, updateUser, signIn, data, signOut }}>
       {children}
     </AuthContext.Provider>
   );
