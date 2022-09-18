@@ -23,11 +23,13 @@ class MovieNotesController {
     const { id } = request.params;
 
     const movie = await knex("movie_notes").where({ id }).first();
+    const user = await knex('users').where({id: movie.user_id}).first();
     const tags = await knex("movie_tags")
       .where({ movie_id: id })
       .orderBy("name");
+      console.log(user);
 
-    return response.json({ ...movie, tags });
+    return response.json({ ...movie, tags, user });
   }
 
   async delete(request, response) {
