@@ -15,7 +15,7 @@ export const Section: React.FC<Props> = (props) => {
   return (
     <Container>
       <h2>{title}</h2>
-      <StarCounter ratting={ratting} />
+      <StarCounter ratting={ratting} size={12}/>
       <p>{description}</p>
       <TagGroup tags={tags} />
     </Container>
