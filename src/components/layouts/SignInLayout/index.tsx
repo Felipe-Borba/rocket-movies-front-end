@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SignInBackground from "../../../../public/signInBackground.png"
+import SignInBackground from "../../../assets/signInBackground.png"
 
 
 interface Props {
